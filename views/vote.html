@@ -1,0 +1,8 @@
+<p class="poll-header">{{ question }}<br/>{% if allowed == $data->required %}(Pick {{ allowed }}){% else %}(Pick {{ required }}-{{ allowed }} choices){% end %}</p>
+<div class="poll-votes-{{id}}">
+{% foreach options as index, option %}
+<input id="p{{ id }}_{{ index }}" class="poll-option" value="{{ option }}" type="{% if allowed > 1 %}checkbox" name="poll_option[]"{% else %}radio" name="poll_option"{% end %}{% if !empty($data->votes) && $data->votes[$data->option] === 'true' %}checked {% end %}/>
+<label for="p{{ id }}_{{ index }}">{{ option }}</label><br/>
+{% end %}
+</div>
+<input type="submit" value="Vote" onclick="poll.submit(this.parentNode, {{ id }});"/>&nbsp;<button onclick="poll.get(this.parentNode, {{ id }}, 'poll', true);">View Results</button>

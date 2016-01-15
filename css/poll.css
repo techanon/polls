@@ -1,0 +1,27 @@
+.poll {
+margin:0;
+padding:0;
+font-size:12px;
+}
+.poll .poll-info {
+margin-top: 5px;
+}
+.poll .poll-header {
+font-size:14px;
+font-weight:bold;
+}
+.poll .poll-option-text:before {
+content: "- ";
+}
+.poll .poll-option {
+text-align:right;
+white-space:nowrap;
+box-sizing:border-box;
+margin-bottom:3px;
+}
+.poll .poll-option:after {
+content:" ";
+}
+.poll [class^="poll-votes"] {
+margin-bottom:15px;
+}

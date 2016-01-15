@@ -1,0 +1,11 @@
+<style>.poll-results-{{id}} .poll-option { border-bottom:5px solid {{ color }}; }</style>
+<p class="poll-header">{{ question }}<br/>({{ res->total }} total){% if User::require_login() && !$data->votable %} - Closed to voting{% end %}</p>
+{% foreach options as option %}
+<div class="poll-results-{{id}}">
+<div class="poll-option-text">{{ option }} </div>
+<div class="poll-option" style="{% if override %}border-bottom-color:{{override}};{% end %}width:{{ res->grouped[$data->option] / $data->total * 100 }}%;"> {{ (int) ($data->res->grouped[$data->option] / $data->total * 100) }}% ({{ res->grouped[$data->option] }} votes) </div>
+</div>
+{% end %}
+{% if User::require_login() && $data->votable %}
+<button onclick="poll.get(this.parentNode, {{ id }}, 'vote')">{% if voted %}{"Change Vote"}{% else %}{"Go To Vote"}{% end %}</button>
+{% end %}

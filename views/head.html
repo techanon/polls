@@ -1,0 +1,6 @@
+<select class="poll_select" onchange="poll.get(this.nextElementSibling.nextElementSibling,this.value,'poll');">
+	{% if !polls %}<option>-- No Available Polls --</option>{% end %}
+	{% foreach polls as id, title %}
+	<option value="{{ id }}"{% if id == $data->active %} selected{% end %}>{{ title }}</option>
+	{% end %}
+</select>
